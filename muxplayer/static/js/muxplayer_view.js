@@ -1,5 +1,5 @@
-/* Javascript for videojsXBlock. */
-function videojsXBlockInitView(runtime, element) {
+/* Javascript for muxplayerXBlock. */
+function muxplayerXBlockInitView(runtime, element) {
     /* Weird behaviour :
      * In the LMS, element is the DOM container.
      * In the CMS, element is the jQuery object associated*

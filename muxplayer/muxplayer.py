@@ -1,4 +1,4 @@
-""" videojsXBlock main Python class"""
+""" muxplayerXBlock main Python class"""
 
 import pkg_resources
 from django.template import Context, Template
@@ -8,7 +8,7 @@ from xblock.fields import Scope, Integer, String, Boolean
 from xblock.fragment import Fragment
 
 
-class videojsXBlock(XBlock):
+class muxplayerXBlock(XBlock):
 
     '''
     Icon of the XBlock. Values : [other (default), video, problem]
@@ -98,18 +98,18 @@ class videojsXBlock(XBlock):
             'source_url': self.source_url
         }
 
-        html = self.render_template('static/html/videojs_view.html', context)
+        html = self.render_template('static/html/muxplayer_view.html', context)
 
         frag = Fragment(html)
-        frag.add_css(self.load_resource("static/css/videojs.css"))
+        frag.add_css(self.load_resource("static/css/muxplayer.css"))
 
         '''
-        No need to load dash.all.min.js as I have already added it from cdn in videojs_view.html
+        No need to load dash.all.min.js as I have already added it from cdn in muxplayer_view.html
         frag.add_javascript(self.load_resource("static/js/dash.all.debug.js"))
         <script src="https://cdn.dashjs.org/latest/dash.all.min.js"></script>
         '''
-        frag.add_javascript(self.load_resource("static/js/videojs_view.js"))
-        frag.initialize_js('videojsXBlockInitView')
+        frag.add_javascript(self.load_resource("static/js/muxplayer_view.js"))
+        frag.initialize_js('muxplayerXBlockInitView')
         return frag
 
     def studio_view(self, context=None):
@@ -126,15 +126,15 @@ class videojsXBlock(XBlock):
             'start_time': self.start_time,
             'end_time': self.end_time
         }
-        html = self.render_template('static/html/videojs_edit.html', context)
+        html = self.render_template('static/html/muxplayer_edit.html', context)
 
         frag = Fragment(html)
-        frag.add_javascript(self.load_resource("static/js/videojs_edit.js"))
-        frag.initialize_js('videojsXBlockInitStudio')
+        frag.add_javascript(self.load_resource("static/js/muxplayer_edit.js"))
+        frag.initialize_js('muxplayerXBlockInitStudio')
         return frag
 
     @XBlock.json_handler
-    def save_videojs(self, data, suffix=''):
+    def save_muxplayer(self, data, suffix=''):
         """
         The saving handler.
         """

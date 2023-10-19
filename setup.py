@@ -1,4 +1,4 @@
-"""Setup for videojsXBlock."""
+"""Setup for muxplayerXBlock."""
 
 import os
 from setuptools import setup
