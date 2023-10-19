@@ -15,19 +15,19 @@ def package_data(pkg, root):
 
 
 setup(
-    name='videojs-xblock',
+    name='muxplayer-xblock',
     version='0.1',
-    description='XBlock to use the Video.js player in edX, instead of the default one.',
+    description='XBlock to use the Mux player in edX, instead of the default one.',
     packages=[
-        'videojs',
+        'muxplayer',
     ],
     install_requires=[
         'XBlock',
     ],
     entry_points={
         'xblock.v1': [
-            'videojs = videojs:videojsXBlock',
+            'muxplayer = muxplayer:muxplayerXBlock',
         ]
     },
-    package_data=package_data("videojs", "static"),
+    package_data=package_data("muxplayer", "static"),
 )

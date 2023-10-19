@@ -19,14 +19,14 @@ class videojsXBlock(XBlock):
     Fields
     '''
     display_name = String(display_name="Display Name",
-                          default="Video JS",
+                          default="Mux Player",
                           scope=Scope.settings,
                           help="This name appears in the horizontal navigation at the top of the page.")
 
-    url = String(display_name="Video URL",
-                 default="https://dash.akamaized.net/envivio/EnvivioDash3/manifest.mpd",
+    playback_id = String(display_name="Playback ID",
+                 default="",
                  scope=Scope.content,
-                 help="The URL for your video.")
+                 help="The Playback ID for your video.")
 
     allow_download = Boolean(display_name="Video Download Allowed",
                              default=True,
@@ -82,17 +82,17 @@ class videojsXBlock(XBlock):
         The primary view of the XBlock, shown to students
         when viewing courses.
         """
-        fullUrl = self.url
-        if self.start_time != "" and self.end_time != "":
-            fullUrl += "#t=" + self.start_time + "," + self.end_time
-        elif self.start_time != "":
-            fullUrl += "#t=" + self.start_time
-        elif self.end_time != "":
-            fullUrl += "#t=0," + self.end_time
+        fullPlaybackID = self.playback_id
+        # if self.start_time != "" and self.end_time != "":
+        #     fullUrl += "#t=" + self.start_time + "," + self.end_time
+        # elif self.start_time != "":
+        #     fullUrl += "#t=" + self.start_time
+        # elif self.end_time != "":
+        #     fullUrl += "#t=0," + self.end_time
 
         context = {
             'display_name': self.display_name,
-            'url': fullUrl,
+            'url': fullPlaybackID,
             'allow_download': self.allow_download,
             'source_text': self.source_text,
             'source_url': self.source_url
@@ -119,7 +119,7 @@ class videojsXBlock(XBlock):
         """
         context = {
             'display_name': self.display_name,
-            'url': self.url,
+            'playback_id': self.playback_id,
             'allow_download': self.allow_download,
             'source_text': self.source_text,
             'source_url': self.source_url,
@@ -139,7 +139,7 @@ class videojsXBlock(XBlock):
         The saving handler.
         """
         self.display_name = data['display_name']
-        self.url = data['url']
+        self.playback_id = data['playback_id']
         # Str to Bool translation
         self.allow_download = True if data['allow_download'] == "True" else False
         self.source_text = data['source_text']

@@ -1,1 +1,1 @@
-from .videojs import videojsXBlock
+from .muxplayer import muxplayerXBlock
