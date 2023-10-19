@@ -92,7 +92,7 @@ class muxplayerXBlock(XBlock):
 
         context = {
             'display_name': self.display_name,
-            'url': fullPlaybackID,
+            'playback_id': fullPlaybackID,
             'allow_download': self.allow_download,
             'source_text': self.source_text,
             'source_url': self.source_url
